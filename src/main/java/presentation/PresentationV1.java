@@ -9,8 +9,8 @@ public class PresentationV1 {
         /**
          * L'injection des dépendences par instantiation statique
          */
-        DaoImplV2 d = new DaoImplV2();
-        MetierImpl metier = new MetierImpl(d); // Injection des dépendances via le constructeur
+        DaoImplV2 dao = new DaoImplV2();
+        MetierImpl metier = new MetierImpl(dao); // Injection des dépendances via le constructeur
         System.out.println("RESULTAT = " + metier.calcul());
     }
 }
