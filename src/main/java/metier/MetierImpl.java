@@ -1,15 +1,19 @@
 package metier;
 
-import dao.DaoImpl;
 import dao.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component("metier")
 public class MetierImpl implements IMetier{
     //Couplage faible
     private IDao dao;
 
     public MetierImpl() {}
 
-    public MetierImpl(IDao dao) {
+    @Autowired
+    public MetierImpl(@Qualifier("daoV2") IDao dao) {
         this.dao = dao;
     }
 
@@ -20,6 +24,8 @@ public class MetierImpl implements IMetier{
         return res;
     }
 
+    @Autowired
+    @Qualifier("dao")
     public void setDao(IDao dao) {
         this.dao = dao;
     }
